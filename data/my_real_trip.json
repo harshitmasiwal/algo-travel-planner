@@ -1,0 +1,826 @@
+{
+  "trip": {
+    "tripId": "my_trip_001",
+    "currency": "INR",
+    "totalBudget": 20000,
+    "partySize": 2,
+    "bookingTime": "2026-09-28T08:59:03.589Z"
+  },
+  "user": {
+    "interests": {
+      "history": 0.9,
+      "architecture": 0.8,
+      "museum": 0.7,
+      "food": 0.7,
+      "nature": 0.5,
+      "religious": 0.4,
+      "shopping": 0.2
+    },
+    "explicitInterests": [
+      "fort",
+      "mughal",
+      "heritage"
+    ],
+    "dislikes": [
+      "shopping",
+      "market"
+    ],
+    "modePreference": {
+      "taxi": "preferred",
+      "transit": "acceptable",
+      "walk": "low"
+    },
+    "allowedModes": [
+      "walk",
+      "taxi",
+      "transit"
+    ],
+    "comfortPreference": "standard",
+    "transferTolerance": 2,
+    "maxWalkKm": 1.5,
+    "waitingToleranceMin": 20,
+    "weather": {
+      "tempPrefMin": 20,
+      "tempPrefMax": 32,
+      "coldTol": 8,
+      "heatTol": 8,
+      "rainTol": 0.5,
+      "windTol": 0.4
+    },
+    "costPreference": "balanced",
+    "preferredCostRange": null,
+    "meals": {
+      "lunch": {
+        "windowStart": "12:00",
+        "windowEnd": "14:30",
+        "preferredTime": "13:00",
+        "timeTolerance": 60,
+        "durationMin": 45,
+        "durationTolerance": 30,
+        "diet": "nonveg",
+        "cuisines": [
+          "north_indian",
+          "mughlai"
+        ],
+        "locationPref": "near_next_attraction",
+        "avgCost": 500
+      },
+      "dinner": {
+        "windowStart": "19:00",
+        "windowEnd": "21:30",
+        "preferredTime": "20:00",
+        "timeTolerance": 60,
+        "durationMin": 60,
+        "durationTolerance": 30,
+        "diet": "nonveg",
+        "cuisines": [
+          "north_indian"
+        ],
+        "locationPref": "near_next_attraction",
+        "avgCost": 800
+      }
+    },
+    "mustVisit": [
+      "red_fort_real"
+    ],
+    "mustAvoid": [],
+    "mandatoryGroups": [
+      {
+        "category": "museum",
+        "count": 1,
+        "mode": "atLeast"
+      }
+    ],
+    "forbiddenCategories": [],
+    "minPlacesPerDay": 3,
+    "maxPlacesPerDay": 6
+  },
+  "days": [
+    {
+      "dayIndex": 0,
+      "date": "2026-10-05",
+      "dayStart": "08:00",
+      "dayEnd": "20:00",
+      "startLocation": {
+        "id": "my_hotel",
+        "name": "Mera Hotel",
+        "lat": 28.6315,
+        "lng": 77.2167
+      },
+      "endLocation": {
+        "id": "my_hotel",
+        "name": "Mera Hotel",
+        "lat": 28.6315,
+        "lng": 77.2167
+      },
+      "dailyBudget": null,
+      "pool": [
+        "red_fort_real",
+        "jama_masjid_real",
+        "india_gate_real",
+        "karim_restaurant_real"
+      ]
+    }
+  ],
+  "places": [
+    {
+      "id": "red_fort_real",
+      "name": "Red Fort",
+      "lat": 28.6562,
+      "lng": 77.241,
+      "category": "fort",
+      "subCategories": [
+        "mughal",
+        "heritage"
+      ],
+      "tags": [
+        "UNESCO",
+        "history",
+        "architecture"
+      ],
+      "open": "09:30",
+      "close": "17:00",
+      "closedDays": [
+        "Mon"
+      ],
+      "temporaryClosures": [],
+      "duration": {
+        "min": 60,
+        "ideal": 120,
+        "max": 180
+      },
+      "cost": 600,
+      "otherCost": 0,
+      "priority": "HIGH",
+      "existingInterest": 0.9,
+      "modifiers": {
+        "flagship": 1,
+        "unesco": 1,
+        "mustSee": 1,
+        "seasonal": 0,
+        "campaign": 0
+      },
+      "outdoorSensitivity": 0.8,
+      "accessRestricted": false,
+      "restricted": false,
+      "eligibleDays": null,
+      "transportAccess": [
+        "walk",
+        "taxi",
+        "transit"
+      ],
+      "booking": null
+    },
+    {
+      "id": "jama_masjid_real",
+      "name": "Jama Masjid",
+      "lat": 28.6507,
+      "lng": 77.2334,
+      "category": "religious",
+      "subCategories": [
+        "mosque",
+        "mughal"
+      ],
+      "tags": [
+        "heritage",
+        "architecture"
+      ],
+      "open": "07:00",
+      "close": "12:00",
+      "closedDays": [],
+      "temporaryClosures": [],
+      "duration": {
+        "min": 30,
+        "ideal": 45,
+        "max": 60
+      },
+      "cost": 0,
+      "otherCost": 50,
+      "priority": "HIGH",
+      "existingInterest": 0.7,
+      "modifiers": {
+        "flagship": 1,
+        "unesco": 0,
+        "mustSee": 1,
+        "seasonal": 0,
+        "campaign": 0
+      },
+      "outdoorSensitivity": 0.5,
+      "accessRestricted": false,
+      "restricted": false,
+      "eligibleDays": null,
+      "transportAccess": [
+        "walk",
+        "taxi",
+        "transit"
+      ],
+      "booking": null
+    },
+    {
+      "id": "india_gate_real",
+      "name": "India Gate",
+      "lat": 28.6129,
+      "lng": 77.2295,
+      "category": "monument",
+      "subCategories": [
+        "war_memorial"
+      ],
+      "tags": [
+        "history",
+        "landmark"
+      ],
+      "open": "00:00",
+      "close": "23:59",
+      "closedDays": [],
+      "temporaryClosures": [],
+      "duration": {
+        "min": 30,
+        "ideal": 60,
+        "max": 90
+      },
+      "cost": 0,
+      "otherCost": 0,
+      "priority": "HIGH",
+      "existingInterest": 0.8,
+      "modifiers": {
+        "flagship": 1,
+        "unesco": 0,
+        "mustSee": 1,
+        "seasonal": 0,
+        "campaign": 0
+      },
+      "outdoorSensitivity": 0.9,
+      "accessRestricted": false,
+      "restricted": false,
+      "eligibleDays": null,
+      "transportAccess": [
+        "walk",
+        "taxi",
+        "transit"
+      ],
+      "booking": null
+    },
+    {
+      "id": "karim_restaurant_real",
+      "name": "Karim's Hotel",
+      "lat": 28.6498,
+      "lng": 77.232,
+      "category": "restaurant",
+      "subCategories": [
+        "mughlai"
+      ],
+      "tags": [
+        "food",
+        "famous",
+        "nonveg"
+      ],
+      "open": "09:00",
+      "close": "23:00",
+      "closedDays": [],
+      "temporaryClosures": [],
+      "duration": {
+        "min": 30,
+        "ideal": 60,
+        "max": 90
+      },
+      "cost": 600,
+      "otherCost": 0,
+      "priority": "MEDIUM",
+      "existingInterest": 0.7,
+      "modifiers": {
+        "flagship": 1,
+        "unesco": 0,
+        "mustSee": 1,
+        "seasonal": 0,
+        "campaign": 0
+      },
+      "outdoorSensitivity": 0.1,
+      "accessRestricted": false,
+      "restricted": false,
+      "eligibleDays": null,
+      "transportAccess": [
+        "walk",
+        "taxi",
+        "transit"
+      ],
+      "booking": null,
+      "cuisine": [
+        "mughlai",
+        "kebab"
+      ],
+      "dietTags": [
+        "nonveg"
+      ]
+    }
+  ],
+  "travelMatrix": {
+    "ids": [
+      "my_hotel",
+      "red_fort_real",
+      "jama_masjid_real",
+      "india_gate_real",
+      "karim_restaurant_real"
+    ],
+    "modes": {
+      "walk": {
+        "minutes": [
+          [
+            0,
+            43.54,
+            32.23,
+            29,
+            30.29
+          ],
+          [
+            43.54,
+            0,
+            11.53,
+            59.33,
+            13.56
+          ],
+          [
+            32.23,
+            11.53,
+            0,
+            50.64,
+            2.03
+          ],
+          [
+            29,
+            59.33,
+            50.64,
+            0,
+            49.32
+          ],
+          [
+            30.29,
+            13.56,
+            2.03,
+            49.32,
+            0
+          ]
+        ],
+        "km": [
+          [
+            0,
+            3.6286,
+            2.6859,
+            2.4163,
+            2.5239
+          ],
+          [
+            3.6286,
+            0,
+            0.9612,
+            4.9438,
+            1.1303
+          ],
+          [
+            2.6859,
+            0.9612,
+            0,
+            4.2204,
+            0.1693
+          ],
+          [
+            2.4163,
+            4.9438,
+            4.2204,
+            0,
+            4.1103
+          ],
+          [
+            2.5239,
+            1.1303,
+            0.1693,
+            4.1103,
+            0
+          ]
+        ],
+        "transfers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "directness": [
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ]
+        ]
+      },
+      "taxi": {
+        "minutes": [
+          [
+            0,
+            8.71,
+            6.45,
+            5.8,
+            6.06
+          ],
+          [
+            8.71,
+            0,
+            2.31,
+            11.87,
+            2.71
+          ],
+          [
+            6.45,
+            2.31,
+            0,
+            10.13,
+            0.41
+          ],
+          [
+            5.8,
+            11.87,
+            10.13,
+            0,
+            9.86
+          ],
+          [
+            6.06,
+            2.71,
+            0.41,
+            9.86,
+            0
+          ]
+        ],
+        "km": [
+          [
+            0,
+            3.6286,
+            2.6859,
+            2.4163,
+            2.5239
+          ],
+          [
+            3.6286,
+            0,
+            0.9612,
+            4.9438,
+            1.1303
+          ],
+          [
+            2.6859,
+            0.9612,
+            0,
+            4.2204,
+            0.1693
+          ],
+          [
+            2.4163,
+            4.9438,
+            4.2204,
+            0,
+            4.1103
+          ],
+          [
+            2.5239,
+            1.1303,
+            0.1693,
+            4.1103,
+            0
+          ]
+        ],
+        "transfers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "directness": [
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ]
+        ]
+      },
+      "transit": {
+        "minutes": [
+          [
+            0,
+            12.1,
+            8.95,
+            8.05,
+            8.41
+          ],
+          [
+            12.1,
+            0,
+            3.2,
+            16.48,
+            3.77
+          ],
+          [
+            8.95,
+            3.2,
+            0,
+            14.07,
+            0.56
+          ],
+          [
+            8.05,
+            16.48,
+            14.07,
+            0,
+            13.7
+          ],
+          [
+            8.41,
+            3.77,
+            0.56,
+            13.7,
+            0
+          ]
+        ],
+        "km": [
+          [
+            0,
+            3.6286,
+            2.6859,
+            2.4163,
+            2.5239
+          ],
+          [
+            3.6286,
+            0,
+            0.9612,
+            4.9438,
+            1.1303
+          ],
+          [
+            2.6859,
+            0.9612,
+            0,
+            4.2204,
+            0.1693
+          ],
+          [
+            2.4163,
+            4.9438,
+            4.2204,
+            0,
+            4.1103
+          ],
+          [
+            2.5239,
+            1.1303,
+            0.1693,
+            4.1103,
+            0
+          ]
+        ],
+        "transfers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "directness": [
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ]
+        ]
+      }
+    }
+  },
+  "transportServices": {
+    "walk": {
+      "open": "05:00",
+      "close": "23:59"
+    },
+    "transit": {
+      "open": "06:00",
+      "close": "22:00",
+      "transferMin": 10,
+      "departures": [
+        "06:00",
+        "07:00",
+        "08:00",
+        "09:00",
+        "10:00",
+        "11:00",
+        "12:00",
+        "13:00",
+        "14:00",
+        "15:00",
+        "16:00",
+        "17:00",
+        "18:00",
+        "19:00",
+        "20:00",
+        "20:30"
+      ]
+    },
+    "taxi": {
+      "open": "00:00",
+      "close": "23:59"
+    }
+  },
+  "context": {
+    "weather": {
+      "2026-10-05": {
+        "condition": "clear",
+        "tempC": 30,
+        "rain": 0,
+        "wind": 0.1
+      }
+    },
+    "closures": [],
+    "safetyAlerts": [],
+    "environmentalRestrictions": [],
+    "roadClosures": [],
+    "transportSuspensions": [],
+    "events": []
+  }
+}

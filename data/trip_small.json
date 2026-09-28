@@ -1,0 +1,1022 @@
+{
+  "trip": {
+    "tripId": "trip_small_001",
+    "currency": "INR",
+    "totalBudget": 10000,
+    "partySize": 2,
+    "bookingTime": "2026-09-28T07:00:00+05:30"
+  },
+  "user": {
+    "interests": {
+      "museum": 0.9,
+      "history": 0.8,
+      "architecture": 0.7,
+      "food": 0.5
+    },
+    "explicitInterests": [
+      "fort",
+      "heritage"
+    ],
+    "dislikes": [
+      "shopping"
+    ],
+    "modePreference": {
+      "taxi": "preferred",
+      "transit": "acceptable",
+      "walk": "low"
+    },
+    "allowedModes": [
+      "walk",
+      "taxi",
+      "transit"
+    ],
+    "comfortPreference": "standard",
+    "transferTolerance": 2,
+    "maxWalkKm": 2,
+    "waitingToleranceMin": 20,
+    "weather": {
+      "tempPrefMin": 18,
+      "tempPrefMax": 26,
+      "coldTol": 10,
+      "heatTol": 10,
+      "rainTol": 0.6,
+      "windTol": 0.5
+    },
+    "costPreference": "balanced",
+    "preferredCostRange": null,
+    "meals": {
+      "lunch": {
+        "windowStart": "12:00",
+        "windowEnd": "14:30",
+        "preferredTime": "13:00",
+        "timeTolerance": 60,
+        "durationMin": 45,
+        "durationTolerance": 30,
+        "diet": "nonveg",
+        "cuisines": [
+          "north_indian",
+          "mughlai"
+        ],
+        "locationPref": "near_next_attraction",
+        "avgCost": 300
+      },
+      "dinner": {
+        "windowStart": "19:00",
+        "windowEnd": "21:30",
+        "preferredTime": "20:00",
+        "timeTolerance": 60,
+        "durationMin": 45,
+        "durationTolerance": 30,
+        "diet": "nonveg",
+        "cuisines": [
+          "north_indian"
+        ],
+        "locationPref": "near_next_attraction",
+        "avgCost": 400
+      }
+    },
+    "mustVisit": [
+      "museum_a"
+    ],
+    "mustAvoid": [],
+    "mandatoryGroups": [],
+    "forbiddenCategories": [],
+    "minPlacesPerDay": null,
+    "maxPlacesPerDay": null
+  },
+  "days": [
+    {
+      "dayIndex": 0,
+      "date": "2026-09-29",
+      "dayStart": "08:00",
+      "dayEnd": "20:00",
+      "startLocation": {
+        "id": "hotel_small",
+        "name": "Delhi Hotel",
+        "lat": 28.6139,
+        "lng": 77.209
+      },
+      "endLocation": {
+        "id": "hotel_small",
+        "name": "Delhi Hotel",
+        "lat": 28.6139,
+        "lng": 77.209
+      },
+      "dailyBudget": null,
+      "pool": [
+        "museum_a",
+        "fort_b",
+        "gallery_c",
+        "temple_d",
+        "restaurant_e"
+      ]
+    }
+  ],
+  "places": [
+    {
+      "id": "museum_a",
+      "name": "Museum A",
+      "lat": 28.66,
+      "lng": 77.23,
+      "category": "museum",
+      "subCategories": [
+        "history"
+      ],
+      "tags": [
+        "heritage"
+      ],
+      "open": "10:00",
+      "close": "18:00",
+      "closedDays": [],
+      "temporaryClosures": [],
+      "duration": {
+        "min": 60,
+        "ideal": 90,
+        "max": 120
+      },
+      "cost": 200,
+      "otherCost": 0,
+      "priority": "HIGH",
+      "existingInterest": 0.8,
+      "modifiers": {
+        "flagship": 1,
+        "unesco": 0,
+        "mustSee": 1,
+        "seasonal": 0,
+        "campaign": 0
+      },
+      "outdoorSensitivity": 0.1,
+      "accessRestricted": false,
+      "restricted": false,
+      "eligibleDays": null,
+      "transportAccess": [
+        "walk",
+        "taxi",
+        "transit"
+      ],
+      "booking": null
+    },
+    {
+      "id": "fort_b",
+      "name": "Fort B",
+      "lat": 28.655,
+      "lng": 77.24,
+      "category": "fort",
+      "subCategories": [
+        "history"
+      ],
+      "tags": [
+        "heritage",
+        "architecture"
+      ],
+      "open": "09:00",
+      "close": "17:00",
+      "closedDays": [],
+      "temporaryClosures": [],
+      "duration": {
+        "min": 45,
+        "ideal": 60,
+        "max": 90
+      },
+      "cost": 150,
+      "otherCost": 0,
+      "priority": "MEDIUM",
+      "existingInterest": 0.6,
+      "modifiers": {
+        "flagship": 0,
+        "unesco": 1,
+        "mustSee": 0,
+        "seasonal": 0,
+        "campaign": 0
+      },
+      "outdoorSensitivity": 0.7,
+      "accessRestricted": false,
+      "restricted": false,
+      "eligibleDays": null,
+      "transportAccess": [
+        "walk",
+        "taxi",
+        "transit"
+      ],
+      "booking": null
+    },
+    {
+      "id": "gallery_c",
+      "name": "Gallery C",
+      "lat": 28.63,
+      "lng": 77.22,
+      "category": "gallery",
+      "subCategories": [
+        "art"
+      ],
+      "tags": [
+        "culture"
+      ],
+      "open": "10:00",
+      "close": "19:00",
+      "closedDays": [],
+      "temporaryClosures": [],
+      "duration": {
+        "min": 30,
+        "ideal": 60,
+        "max": 90
+      },
+      "cost": 100,
+      "otherCost": 0,
+      "priority": "LOW",
+      "existingInterest": 0.4,
+      "modifiers": {
+        "flagship": 0,
+        "unesco": 0,
+        "mustSee": 0,
+        "seasonal": 0,
+        "campaign": 0
+      },
+      "outdoorSensitivity": 0,
+      "accessRestricted": false,
+      "restricted": false,
+      "eligibleDays": null,
+      "transportAccess": [
+        "walk",
+        "taxi",
+        "transit"
+      ],
+      "booking": null
+    },
+    {
+      "id": "temple_d",
+      "name": "Temple D",
+      "lat": 28.645,
+      "lng": 77.25,
+      "category": "religious",
+      "subCategories": [
+        "temple"
+      ],
+      "tags": [
+        "spiritual"
+      ],
+      "open": "06:00",
+      "close": "21:00",
+      "closedDays": [],
+      "temporaryClosures": [],
+      "duration": {
+        "min": 30,
+        "ideal": 60,
+        "max": 90
+      },
+      "cost": 0,
+      "otherCost": 0,
+      "priority": "MEDIUM",
+      "existingInterest": 0.5,
+      "modifiers": {
+        "flagship": 0,
+        "unesco": 0,
+        "mustSee": 0,
+        "seasonal": 0,
+        "campaign": 0
+      },
+      "outdoorSensitivity": 0.3,
+      "accessRestricted": false,
+      "restricted": false,
+      "eligibleDays": null,
+      "transportAccess": [
+        "walk",
+        "taxi",
+        "transit"
+      ],
+      "booking": null
+    },
+    {
+      "id": "restaurant_e",
+      "name": "Restaurant E",
+      "lat": 28.635,
+      "lng": 77.215,
+      "category": "restaurant",
+      "subCategories": [
+        "north_indian"
+      ],
+      "tags": [
+        "food",
+        "lunch"
+      ],
+      "open": "11:00",
+      "close": "23:00",
+      "closedDays": [],
+      "temporaryClosures": [],
+      "duration": {
+        "min": 30,
+        "ideal": 60,
+        "max": 90
+      },
+      "cost": 300,
+      "otherCost": 0,
+      "priority": "LOW",
+      "existingInterest": 0.3,
+      "modifiers": {
+        "flagship": 0,
+        "unesco": 0,
+        "mustSee": 0,
+        "seasonal": 0,
+        "campaign": 0
+      },
+      "outdoorSensitivity": 0,
+      "accessRestricted": false,
+      "restricted": false,
+      "eligibleDays": null,
+      "transportAccess": [
+        "walk",
+        "taxi",
+        "transit"
+      ],
+      "booking": null,
+      "cuisine": [
+        "north_indian",
+        "mughlai"
+      ],
+      "dietTags": [
+        "nonveg"
+      ]
+    }
+  ],
+  "travelMatrix": {
+    "ids": [
+      "hotel_small",
+      "museum_a",
+      "fort_b",
+      "gallery_c",
+      "temple_d",
+      "restaurant_e"
+    ],
+    "modes": {
+      "walk": {
+        "minutes": [
+          [
+            0,
+            35,
+            65.77,
+            20,
+            63.47,
+            29.02
+          ],
+          [
+            66.25,
+            0,
+            25,
+            41.71,
+            30.81,
+            37.7
+          ],
+          [
+            65.77,
+            13.48,
+            0,
+            40.76,
+            30,
+            39.61
+          ],
+          [
+            25.05,
+            41.71,
+            25,
+            0,
+            40.43,
+            8.88
+          ],
+          [
+            40,
+            30.81,
+            17.75,
+            40.43,
+            0,
+            43.11
+          ],
+          [
+            29.02,
+            37.7,
+            39.61,
+            8.88,
+            43.11,
+            0
+          ]
+        ],
+        "km": [
+          [
+            0,
+            14.583333333333334,
+            5.4808,
+            8.333333333333334,
+            5.2888,
+            2.4182
+          ],
+          [
+            5.5206,
+            0,
+            10.416666666666666,
+            3.4757,
+            2.5672,
+            3.1417
+          ],
+          [
+            5.4808,
+            1.123,
+            0,
+            3.3966,
+            12.5,
+            3.3011
+          ],
+          [
+            2.0875,
+            3.4757,
+            10.416666666666666,
+            0,
+            3.3695,
+            0.7398
+          ],
+          [
+            16.666666666666668,
+            2.5672,
+            1.4794,
+            3.3695,
+            0,
+            3.5921
+          ],
+          [
+            2.4182,
+            3.1417,
+            3.3011,
+            0.7398,
+            3.5921,
+            0
+          ]
+        ],
+        "transfers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "directness": [
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ]
+        ]
+      },
+      "taxi": {
+        "minutes": [
+          [
+            0,
+            35,
+            13.15,
+            20,
+            12.69,
+            5.8
+          ],
+          [
+            13.25,
+            0,
+            25,
+            8.34,
+            6.16,
+            7.54
+          ],
+          [
+            13.15,
+            2.7,
+            0,
+            8.15,
+            30,
+            7.92
+          ],
+          [
+            5.01,
+            8.34,
+            25,
+            0,
+            8.09,
+            1.78
+          ],
+          [
+            40,
+            6.16,
+            3.55,
+            8.09,
+            0,
+            8.62
+          ],
+          [
+            5.8,
+            7.54,
+            7.92,
+            1.78,
+            8.62,
+            0
+          ]
+        ],
+        "km": [
+          [
+            0,
+            14.583333333333334,
+            5.4808,
+            8.333333333333334,
+            5.2888,
+            2.4182
+          ],
+          [
+            5.5206,
+            0,
+            10.416666666666666,
+            3.4757,
+            2.5672,
+            3.1417
+          ],
+          [
+            5.4808,
+            1.123,
+            0,
+            3.3966,
+            12.5,
+            3.3011
+          ],
+          [
+            2.0875,
+            3.4757,
+            10.416666666666666,
+            0,
+            3.3695,
+            0.7398
+          ],
+          [
+            16.666666666666668,
+            2.5672,
+            1.4794,
+            3.3695,
+            0,
+            3.5921
+          ],
+          [
+            2.4182,
+            3.1417,
+            3.3011,
+            0.7398,
+            3.5921,
+            0
+          ]
+        ],
+        "transfers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "directness": [
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ]
+        ]
+      },
+      "transit": {
+        "minutes": [
+          [
+            0,
+            35,
+            18.27,
+            20,
+            17.63,
+            8.06
+          ],
+          [
+            18.4,
+            0,
+            25,
+            11.59,
+            8.56,
+            10.47
+          ],
+          [
+            18.27,
+            3.74,
+            0,
+            11.32,
+            30,
+            11
+          ],
+          [
+            6.96,
+            11.59,
+            25,
+            0,
+            11.23,
+            2.47
+          ],
+          [
+            40,
+            8.56,
+            4.93,
+            11.23,
+            0,
+            11.97
+          ],
+          [
+            8.06,
+            10.47,
+            11,
+            2.47,
+            11.97,
+            0
+          ]
+        ],
+        "km": [
+          [
+            0,
+            14.583333333333334,
+            5.4808,
+            8.333333333333334,
+            5.2888,
+            2.4182
+          ],
+          [
+            5.5206,
+            0,
+            10.416666666666666,
+            3.4757,
+            2.5672,
+            3.1417
+          ],
+          [
+            5.4808,
+            1.123,
+            0,
+            3.3966,
+            12.5,
+            3.3011
+          ],
+          [
+            2.0875,
+            3.4757,
+            10.416666666666666,
+            0,
+            3.3695,
+            0.7398
+          ],
+          [
+            16.666666666666668,
+            2.5672,
+            1.4794,
+            3.3695,
+            0,
+            3.5921
+          ],
+          [
+            2.4182,
+            3.1417,
+            3.3011,
+            0.7398,
+            3.5921,
+            0
+          ]
+        ],
+        "transfers": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "directness": [
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ],
+          [
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct",
+            "direct"
+          ]
+        ]
+      }
+    }
+  },
+  "transportServices": {
+    "walk": {
+      "open": "05:00",
+      "close": "23:59"
+    },
+    "transit": {
+      "open": "06:00",
+      "close": "22:00",
+      "transferMin": 10,
+      "departures": [
+        "06:00",
+        "06:30",
+        "07:00",
+        "07:30",
+        "08:00",
+        "08:30",
+        "09:00",
+        "09:30",
+        "10:00",
+        "10:30",
+        "11:00",
+        "11:30",
+        "12:00",
+        "12:30",
+        "13:00",
+        "13:30",
+        "14:00",
+        "14:30",
+        "15:00",
+        "15:30",
+        "16:00",
+        "16:30",
+        "17:00",
+        "17:30",
+        "18:00",
+        "18:30",
+        "19:00",
+        "19:30",
+        "20:00",
+        "20:30"
+      ]
+    },
+    "taxi": {
+      "open": "00:00",
+      "close": "23:59"
+    }
+  },
+  "context": {
+    "weather": {
+      "2026-09-29": {
+        "condition": "clear",
+        "tempC": 32,
+        "rain": 0,
+        "wind": 0.1
+      }
+    },
+    "closures": [],
+    "safetyAlerts": [],
+    "environmentalRestrictions": [],
+    "roadClosures": [],
+    "transportSuspensions": [],
+    "events": []
+  }
+}
