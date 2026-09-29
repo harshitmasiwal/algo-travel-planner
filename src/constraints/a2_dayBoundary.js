@@ -41,14 +41,34 @@ import { formatTime } from '../utils/time.js';
  *   failure_reason: string|null
  * }}
  */
-export function checkDayBoundary({
-  stops,
-  visitDurations,
-  lastFinishMin,
-  returnTravelMin,
-  dayEndMin,
-  currentTimeMin,
-}) {
+export function checkDayBoundary(params, maybeDayEnd) {
+  if (Array.isArray(params)) {
+    const schedule = params;
+    const dayEndMin = maybeDayEnd ?? 1440;
+    const lastEntry = schedule[schedule.length - 1];
+    const return_arrival_time = lastEntry ? (lastEntry.endMin ?? lastEntry.finishMin ?? 0) : 0;
+    const feasible = return_arrival_time <= dayEndMin;
+    const time_overrun = Math.max(0, return_arrival_time - dayEndMin);
+    return {
+      feasible,
+      day_time_feasible: feasible,
+      return_arrival_time,
+      return_arrival_formatted: formatTime(return_arrival_time),
+      remaining_time: dayEndMin - return_arrival_time,
+      time_overrun,
+      failure_reason: feasible ? null : `Return arrival ${formatTime(return_arrival_time)} exceeds day end ${formatTime(dayEndMin)} (overrun ${time_overrun} min)`,
+    };
+  }
+
+  const {
+    stops = [],
+    visitDurations = [],
+    lastFinishMin = 0,
+    returnTravelMin = 0,
+    dayEndMin = 1440,
+    currentTimeMin = 0,
+  } = params || {};
+
   // Sum up components
   let totalTravel  = 0;
   let totalVisit   = 0;
@@ -87,8 +107,11 @@ export function checkDayBoundary({
     failure_reason = earlyViolation;
   }
 
+  const isFeasible = feasible && !earlyViolation;
+
   return {
-    day_time_feasible:        feasible && !earlyViolation,
+    feasible:                 isFeasible,
+    day_time_feasible:        isFeasible,
     total_day_time,
     available_time,
     return_arrival_time,
@@ -115,6 +138,12 @@ export function canFitStop(
   currentFinishMin, travelToNewMin, openTime, closeTime,
   durationMin, travelToEndMin, dayEndMin
 ) {
+  if (arguments.length <= 3) {
+    const finishMin = currentFinishMin;
+    const returnTravel = travelToNewMin ?? 0;
+    const dayEnd = openTime ?? 1440;
+    return finishMin + returnTravel <= dayEnd;
+  }
   const arrivalAtNew = currentFinishMin + travelToNewMin;
   const startAtNew   = Math.max(arrivalAtNew, openTime);
   const finishAtNew  = startAtNew + durationMin;

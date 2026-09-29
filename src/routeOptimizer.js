@@ -201,6 +201,10 @@ export function optimizeDay(dayInput, pool, travelMatrix, context, cfg = config)
     finalState = localSearch(greedy, pool, solveCtx, cfg, rng, cfg.localSearchTimeLimitMs ?? 1800);
   }
 
+  if (finalState.stopCount > 0) {
+    finalState.totalScore = Math.min(1, Math.max(0, finalState.totalScore / finalState.stopCount));
+  }
+
   return finalState;
 }
 

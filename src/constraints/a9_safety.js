@@ -49,12 +49,12 @@ import config from '../../config.js';
  *   failure_reason: string|null
  * }}
  */
-export function checkPlaceSafety(place, visitDate, visitStartMin, weather, context, cfg = config) {
+export function checkPlaceSafety(place, visitDate, visitStartMin, weather, context = {}, cfg = config) {
   const warnings = [];
 
   // ── S_i: safety alert ──────────────────────────────────────────────────
   let S_i = 1;
-  for (const alert of (context.safetyAlerts ?? [])) {
+  for (const alert of (context?.safetyAlerts ?? [])) {
     if (alert.placeId !== place.id || alert.date !== visitDate) continue;
     if (alert.level === 'block') {
       S_i = 0;
@@ -64,11 +64,11 @@ export function checkPlaceSafety(place, visitDate, visitStartMin, weather, conte
   }
 
   // ── O_i: official closure ──────────────────────────────────────────────
-  const O_i = context.closures.has(`${place.id}|${visitDate}`) ? 0 : 1;
+  const O_i = context?.closures?.has?.(`${place.id}|${visitDate}`) ? 0 : 1;
 
   // ── E_i: environmental restriction ────────────────────────────────────
   let E_i = 1;
-  for (const er of (context.environmentalRestrictions ?? [])) {
+  for (const er of (context?.environmentalRestrictions ?? [])) {
     if (er.placeId === place.id && er.date === visitDate) {
       E_i = 0;
       break;

@@ -17,7 +17,7 @@
  *               RESTRICTED, NOT_ELIGIBLE_DAY
  */
 
-// ── Day-of-week helper ────────────────────────────────────────────────────────
+import config from '../../config.js';
 
 const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -43,7 +43,7 @@ function weekdayOf(dateStr) {
  * @returns {{ blocked: boolean, closure: object|null }}
  */
 function checkTemporaryClosure(temporaryClosures, visitDate, visitStartMin, visitEndMin) {
-  for (const tc of temporaryClosures) {
+  for (const tc of (temporaryClosures ?? [])) {
     if (tc.date !== visitDate) continue;
     // Blocked if the visit overlaps with the closure window
     const overlap = visitStartMin < tc.to && visitEndMin > tc.from;
@@ -116,12 +116,14 @@ export function checkAvailability(
   }
 
   // ── eligibleDays gate ───────────────────────────────────────────────────
-  if (place.eligibleDays !== null && !place.eligibleDays.includes(dayIndex)) {
+  if (Array.isArray(place.eligibleDays) && !place.eligibleDays.includes(dayIndex)) {
     return _build(place.id, false, true, true, false, false, 'NOT_ELIGIBLE_DAY');
   }
 
   // ── a_reach: at least one mode in common ───────────────────────────────
-  const reachable = place.transportAccess.some((m) => allowedModes.includes(m));
+  const pAccess = place.transportAccess ?? Object.keys(config.speeds ?? { walk: 5, taxi: 25, transit: 18 });
+  const userModes = allowedModes ?? Object.keys(config.speeds ?? { walk: 5, taxi: 25, transit: 18 });
+  const reachable = pAccess.some((m) => userModes.includes(m));
   if (!reachable) {
     return _build(place.id, false, true, false, false, true, 'NOT_REACHABLE');
   }

@@ -77,11 +77,16 @@ export function forwardSimulate(schedule, places, state, context, cfg) {
       }
 
       // A5: availability
-      const availCtx = { closures: new Set() };
+      const availCtx = { closures: new Set(context?.closures ?? []) };
+      const userModes = context?.user?.allowedModes?.length
+        ? context.user.allowedModes
+        : (Object.keys(context?.user?.modePreference ?? {}).length
+            ? Object.keys(context.user.modePreference)
+            : Object.keys(cfg.speeds ?? { walk: 5, taxi: 25, transit: 18 }));
       const avail = checkAvailability(
         place, state.date, state.dayIndex ?? 0,
         entry.startMin, entry.endMin,
-        [], availCtx,
+        userModes, availCtx,
       );
       if (!avail.available) {
         issues.push({

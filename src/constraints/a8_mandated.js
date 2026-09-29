@@ -35,22 +35,22 @@
  */
 export function checkMandatedPlace(place, user, leg = null) {
   // Must-visit → forced inclusion
-  if (user.mustVisit.includes(place.id)) {
-    return { includeForced: true, excludeForced: false, reason: 'MUST_VISIT' };
+  if ((user.mustVisit ?? []).includes(place.id)) {
+    return { allowed: true, includeForced: true, excludeForced: false, reason: 'MUST_VISIT' };
   }
   // Must-avoid → forced exclusion
-  if (user.mustAvoid.includes(place.id)) {
-    return { includeForced: false, excludeForced: true, reason: 'MUST_AVOID' };
+  if ((user.mustAvoid ?? []).includes(place.id)) {
+    return { allowed: false, includeForced: false, excludeForced: true, reason: 'MUST_AVOID' };
   }
   // Forbidden category
   if ((user.forbiddenCategories ?? []).includes(place.category)) {
-    return { includeForced: false, excludeForced: true, reason: 'FORBIDDEN_CATEGORY' };
+    return { allowed: false, includeForced: false, excludeForced: true, reason: 'FORBIDDEN_CATEGORY' };
   }
   // Walk limit check (if leg is by walk)
-  if (leg && leg.mode === 'walk' && leg.legKm > user.maxWalkKm) {
-    return { includeForced: false, excludeForced: true, reason: 'WALK_TOO_FAR' };
+  if (leg && leg.mode === 'walk' && leg.legKm > (user.maxWalkKm ?? Infinity)) {
+    return { allowed: false, includeForced: false, excludeForced: true, reason: 'WALK_TOO_FAR' };
   }
-  return { includeForced: false, excludeForced: false, reason: null };
+  return { allowed: true, includeForced: false, excludeForced: false, reason: null };
 }
 
 // ── Route-level validation ────────────────────────────────────────────────────

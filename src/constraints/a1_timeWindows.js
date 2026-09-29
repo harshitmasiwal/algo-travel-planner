@@ -57,7 +57,9 @@ export function checkTimeWindow(place, arrivalMin, durationMin) {
   // Secondary check: window too narrow for any valid duration
   if (openTime >= closeTime) {
     return {
-      feasible: false, arrival_time: formatTime(arrivalMin),
+      feasible: false,
+      arrivalMin, startMin, finishMin, waitingMin, slackMin,
+      arrival_time: formatTime(arrivalMin),
       visit_start_time: formatTime(startMin), visit_end_time: formatTime(finishMin),
       waiting_time: waitingMin, opening_time: formatTime(openTime),
       closing_time: formatTime(closeTime), time_slack: slackMin,
@@ -67,6 +69,11 @@ export function checkTimeWindow(place, arrivalMin, durationMin) {
 
   return {
     feasible,
+    arrivalMin,
+    startMin,
+    finishMin,
+    waitingMin,
+    slackMin,
     arrival_time:      formatTime(arrivalMin),
     visit_start_time:  formatTime(startMin),
     visit_end_time:    formatTime(finishMin),

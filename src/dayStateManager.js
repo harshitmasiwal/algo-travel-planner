@@ -36,7 +36,7 @@ export class DayStateManager {
     this.date       = dayInput.date;
     this.dayStart   = dayInput.dayStart;    // minutes from midnight
     this.dayEnd     = dayInput.dayEnd;      // minutes from midnight
-    this.hotel      = dayInput.hotel;       // { id, lat, lng }
+    this.hotel      = dayInput.hotel ?? dayInput.startLocation ?? dayInput.endLocation; // { id, lat, lng }
 
     this.totalBudget      = tripInput.totalBudget   ?? Infinity;
     this.dailyBudget      = dayInput.dailyBudget    ?? Infinity;

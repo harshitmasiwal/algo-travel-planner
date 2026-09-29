@@ -100,6 +100,24 @@ export function mealCost(avgCost, partySize) {
 export function checkIncrementalBudget(
   state, nextPlace, transportMode, legKm, returnKm, partySize, cfg = config
 ) {
+  if (typeof state === 'number') {
+    const cost = state;
+    const remaining = typeof nextPlace === 'number' ? nextPlace : (nextPlace?.budgetRemaining ?? Infinity);
+    const feasible = cost <= remaining;
+    const budgetAfter = remaining - cost;
+    return {
+      feasible,
+      valid: feasible,
+      incrementalCost: cost,
+      returnCostReserve: 0,
+      budgetAfter,
+      budgetRemaining: remaining,
+      remaining,
+      failure_reason: feasible ? null :
+        `Incremental cost ₹${cost.toFixed(0)} exceeds budget ₹${remaining.toFixed(0)}`,
+    };
+  }
+
   const tCost     = computeTransportCost(transportMode, legKm, partySize, cfg);
   const tReturn   = computeTransportCost(transportMode, returnKm, partySize, cfg);
   const pCost     = entryCost(nextPlace, partySize);

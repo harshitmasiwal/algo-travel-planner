@@ -207,12 +207,72 @@ export function checkModeFeasibility({
  *   feasibilityResults: object
  * }}
  */
-export function selectBestMode({
-  fromId, toId, readyMin, date,
-  userAllowedModes, placeTransportAccess,
-  modePreference, transferTolerance, maxWalkKm,
-  transportServices, context, travelMatrix,
-}) {
+export function selectBestMode(arg1, arg2, date, readyMin, serviceWindows, cfg) {
+  // If called with positional arguments (legOptions, user, ...)
+  if (!arg1 || arg2 !== undefined || !arg1.userAllowedModes) {
+    const legOptions = arg1 || {};
+    const user = arg2 || {};
+    const prefScore = { preferred: 3, acceptable: 2, low: 1, avoided: 0 };
+    const modePreference = user.modePreference || { taxi: 'preferred', transit: 'acceptable', walk: 'low' };
+    const maxWalkKm = user.maxWalkKm ?? 2;
+
+    let bestMode = null;
+    let bestScore = -Infinity;
+    let bestLeg = null;
+
+    for (const [mode, leg] of Object.entries(legOptions)) {
+      if (!leg) continue;
+      // Check walk max distance
+      if (mode === 'walk' && leg.km > maxWalkKm) continue;
+
+      const pref = modePreference[mode] ?? 'acceptable';
+      if (pref === 'avoided') continue;
+
+      const prefVal = prefScore[pref] ?? 1;
+      const timeVal = -(leg.travelMin ?? 0);
+      const score = prefVal * 1000 + timeVal;
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestMode = mode;
+        bestLeg = leg;
+      }
+    }
+
+    if (!bestMode || !bestLeg) {
+      return {
+        feasible: false,
+        mode: null,
+        travelMin: Infinity,
+        km: 0,
+        directness: 'none',
+        transfers: 0,
+        info: null,
+        feasibilityResults: {},
+      };
+    }
+
+    return {
+      feasible: true,
+      mode: bestMode,
+      travelMin: bestLeg.travelMin,
+      km: bestLeg.km,
+      directness: bestLeg.directness ?? 'direct',
+      transfers: bestLeg.transfers ?? 0,
+      info: { mode: bestMode, ...bestLeg },
+      feasibilityResults: { [bestMode]: { feasible: true, ...bestLeg } },
+    };
+  }
+
+  const {
+    fromId, toId,
+    userAllowedModes, placeTransportAccess,
+    modePreference, transferTolerance, maxWalkKm,
+    transportServices, context, travelMatrix,
+  } = arg1;
+  const readyMinParam = arg1.readyMin;
+  const dateParam = arg1.date;
+
   const prefScore = { preferred: 3, acceptable: 2, low: 1, avoided: 0 };
   const feasibilityResults = {};
   let bestMode = null;
@@ -222,7 +282,7 @@ export function selectBestMode({
   for (const mode of userAllowedModes) {
     const travelInfo = travelMatrix.lookup(fromId, toId, mode);
     const result = checkModeFeasibility({
-      fromId, toId, mode, readyMin, date, travelInfo,
+      fromId, toId, mode, readyMin: readyMinParam, date: dateParam, travelInfo,
       userAllowedModes, placeTransportAccess,
       transferTolerance, maxWalkKm,
       transportServices, context,
@@ -243,5 +303,14 @@ export function selectBestMode({
     }
   }
 
-  return { mode: bestMode, info: bestInfo, feasibilityResults };
+  return {
+    feasible: bestMode !== null,
+    mode: bestMode,
+    travelMin: bestInfo?.travelMin ?? bestInfo?.travelInfo?.travelMin,
+    km: bestInfo?.km ?? bestInfo?.travelInfo?.km,
+    directness: bestInfo?.directness ?? 'direct',
+    transfers: bestInfo?.transfers ?? 0,
+    info: bestInfo,
+    feasibilityResults,
+  };
 }

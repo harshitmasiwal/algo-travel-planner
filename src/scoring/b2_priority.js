@@ -22,8 +22,15 @@ export function scorePriority(place, cfg = config.b2) {
   const { base, modifierWeights } = cfg;
 
   // Base score by priority level
-  const priorityKey = (place.priority ?? 'LOW').toUpperCase();
-  const baseScore   = base[priorityKey] ?? base.LOW;
+  let baseScore;
+  let priorityKey;
+  if (typeof place.priority === 'number') {
+    baseScore = place.priority;
+    priorityKey = place.priority >= 0.8 ? 'HIGH' : (place.priority >= 0.5 ? 'MEDIUM' : 'LOW');
+  } else {
+    priorityKey = String(place.priority ?? 'LOW').toUpperCase();
+    baseScore   = base[priorityKey] ?? base.LOW;
+  }
 
   // Sum modifier bonuses
   const mods = place.modifiers ?? {};

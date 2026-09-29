@@ -123,7 +123,7 @@ export function buildSchedule(optimizedState, pool, travelMatrix, context, cfg) 
   // Post-visit meal check (dinner after last stop)
   for (const [mealType, pref] of Object.entries(user?.meals ?? {})) {
     if (!fresh.mealsServed.has(mealType)) {
-      const winEnd = parseTime(pref.windowEnd ?? '21:30');
+      const winEnd = typeof pref.windowEnd === 'number' ? pref.windowEnd : (pref.windowEnd ? parseTime(pref.windowEnd) : 1290);
       if (fresh.currentTimeMin <= winEnd) {
         const mealEntry = buildMealEntry(mealType, fresh.currentTimeMin, pref, fresh.currentLocation);
         if (mealEntry.endMin <= fresh.dayEnd) {

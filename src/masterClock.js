@@ -51,15 +51,17 @@ export function advanceClock(currentMin, travelMin, place, visitMin) {
  * @param {Set}    mealsServed    – already served meals
  * @returns {string|null}
  */
+const toMin = (v, def = '13:00') => (typeof v === 'number' ? v : parseTime(v ?? def));
+
 export function mealWindowHit(currentMin, nextStopStart, mealPrefs, mealsServed) {
   if (!mealPrefs) return null;
 
   for (const [type, pref] of Object.entries(mealPrefs)) {
     if (mealsServed.has(type)) continue;
 
-    const winStart = parseTime(pref.windowStart);
-    const winEnd   = parseTime(pref.windowEnd);
-    const preferred= parseTime(pref.preferredTime);
+    const winStart  = toMin(pref.windowStart, '12:00');
+    const winEnd    = toMin(pref.windowEnd, '14:30');
+    const preferred = toMin(pref.preferredTime, '13:00');
 
     // We are in the window, and next stop starts after or at window start
     if (currentMin >= winStart && currentMin <= winEnd) return type;
@@ -79,8 +81,8 @@ export function mealWindowHit(currentMin, nextStopStart, mealPrefs, mealsServed)
  * Creates a meal schedule entry at the current location (zero travel).
  */
 export function buildMealEntry(mealType, currentMin, mealPref, currentLocation) {
-  const preferred  = parseTime(mealPref.preferredTime ?? '13:00');
-  const startMin   = Math.max(currentMin, preferred);
+  const preferred   = toMin(mealPref.preferredTime, '13:00');
+  const startMin    = Math.max(currentMin, preferred);
   const durationMin = mealPref.durationMin ?? 45;
   const endMin     = startMin + durationMin;
   const avgCost    = mealPref.avgCost ?? 0;

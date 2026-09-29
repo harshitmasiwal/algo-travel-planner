@@ -24,9 +24,11 @@ import config from '../config.js';
  * @param {object}   [cfg]     – config override
  * @returns {{ feasible: boolean, slacks: object[], fragileStops: string[], issues: object[] }}
  */
-export function backwardValidate(schedule, state, cfg = config) {
-  const fragileThreshold = cfg.fragileSlackMin ?? 20;
-  const dayEnd           = state.dayEnd;
+export function backwardValidate(schedule, stateOrDayEnd, cfg = config) {
+  const fragileThreshold = cfg?.fragileSlackMin ?? 20;
+  const dayEnd = typeof stateOrDayEnd === 'number'
+    ? stateOrDayEnd
+    : (stateOrDayEnd?.dayEnd ?? (typeof cfg === 'number' ? cfg : 1440));
 
   // Build ordered list of visit entries only
   const visits = schedule

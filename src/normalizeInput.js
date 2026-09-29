@@ -108,13 +108,15 @@ function normalizeBooking(raw) {
 // ── Day normalizer ────────────────────────────────────────────────────────────
 
 function normalizeDay(raw) {
+  const hotel = raw.hotel ?? raw.startLocation;
   return {
     dayIndex:      raw.dayIndex,
     date:          raw.date,
     dayStart:      parseTime(raw.dayStart),
     dayEnd:        parseTime(raw.dayEnd),
-    startLocation: raw.startLocation,
-    endLocation:   raw.endLocation ?? raw.startLocation,
+    hotel,
+    startLocation: raw.startLocation ?? hotel,
+    endLocation:   raw.endLocation ?? raw.startLocation ?? hotel,
     dailyBudget:   raw.dailyBudget ?? null,
     pool:          [...raw.pool],           // copy; dedup happens after
   };
